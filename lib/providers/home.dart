@@ -1,26 +1,43 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:vr_player/vr_player.dart';
 
-///Class responsable for gerent the state of home view
+///CLass that manages the state of the app
 class HomeState extends ChangeNotifier {
-  ///url of video 360°
-  String? videoVr;
+  ///Url of video 360°
+  String? videoPath;
+  ///Controller of VrPlayer
+  VrPlayerController? vrController;
 
-  /// get url video when press button to get a path
+  /// Choose a video
   Future<void> getVideo() async {
-    try {
-      final result = await FilePicker.platform.pickFiles(
-        dialogTitle: 'Selecione um arquivo de vídeo',
-        type: FileType.video,
-        allowMultiple: false,
-      );
-      if (result == null || result.files.isEmpty || result.files.first.path == null) {
-        throw Exception('Nenhum vídeo selecionado.');
+    final result = await FilePicker.platform.pickFiles(type: FileType.video, allowMultiple: false);
+    if (result != null && result.files.isNotEmpty) {
+      videoPath = result.files.single.path;
+      notifyListeners();
+
+      if (vrController != null && videoPath != null) {
+        vrController?.loadVideo(videoUrl: videoPath!);
       }
-      videoVr = result.files.first.path;
-    } catch (e) {
-      throw Exception('Erro ao carregar o vídeo: $e');
     }
-    notifyListeners();
+  }
+
+  /// Set  controller of VrPlayer
+  void setVrController(VrPlayerController controller, VrPlayerObserver observer) {
+    vrController = controller;
+
+    observer
+      ..onStateChange = (state) {
+        if (state == VrState.ready && videoPath != null) {
+          vrController?.play();
+        }
+      }
+      ..onDurationChange = (duration) {}
+      ..onPositionChange = (pos) {}
+      ..onFinishedChange = (finished) {};
+
+    if (videoPath != null) {
+      vrController?.loadVideo(videoUrl: videoPath);
+    }
   }
 }

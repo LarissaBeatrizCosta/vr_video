@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:vr_player/vr_player.dart';
 import '../conts/colors.dart';
 import '../providers/home.dart';
 part '../components/video_viewer.dart';
@@ -33,7 +34,7 @@ Widget _bodyHome(BuildContext context) {
           },
           child: Text('Anexar Vídeo 360°'),
         ),
-        videoViewer(videoUrl: state.videoVr),
+        videoViewer(context),
       ], 
     ),
   );
