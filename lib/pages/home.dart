@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../conts/colors.dart';
+import '../providers/home.dart';
 part '../components/video_viewer.dart';
 
 ///Home of app
@@ -11,16 +13,28 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('VR VÍDEO'), backgroundColor: ColorsApp.appBarColor),
-      body: _bodyHome(),
+      body: _bodyHome(context),
     );
   }
 }
 
-Widget _bodyHome() {
+Widget _bodyHome(BuildContext context) {
+  final state = Provider.of<HomeState>(context);
+
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Column(
-      children: [OutlinedButton(onPressed: () {}, child: Text('Anexar Vídeo 360°'))],
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        OutlinedButton(
+          onPressed: () async {
+            await state.getVideo();
+          },
+          child: Text('Anexar Vídeo 360°'),
+        ),
+        videoViewer(videoUrl: state.videoVr),
+      ], 
     ),
   );
 }

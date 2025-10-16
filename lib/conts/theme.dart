@@ -29,7 +29,7 @@ class AppTheme {
           side: BorderSide(color: ColorsApp.borderColor),
           backgroundColor: Colors.transparent,
           foregroundColor: ColorsApp.textColor,
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
         ),
       ),
     );

@@ -5,7 +5,7 @@ import 'providers/home.dart';
 import 'routes/routes.dart';
 
 void main() {
-  runApp(Provider(create: (_) => HomeState(), child: const MyApp()));
+  runApp(ChangeNotifierProvider(create: (_) => HomeState(), child: const MyApp()));
 }
 
 ///Class responsable for main app
@@ -24,4 +24,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
