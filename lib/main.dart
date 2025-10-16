@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:vr_video/conts/theme.dart';
+import 'package:provider/provider.dart';
+import 'conts/theme.dart';
+import 'providers/home.dart';
+import 'routes/routes.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(Provider(create: (_) => HomeState(), child: const MyApp()));
 }
 
+///Class responsable for main app
 class MyApp extends StatelessWidget {
+  ///Class responsable for main app
   const MyApp({super.key});
 
   @override
@@ -14,6 +19,9 @@ class MyApp extends StatelessWidget {
       title: 'VR Video',
       theme: AppTheme.themeData(),
       debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      onGenerateRoute: Routes.generateRoute,
     );
   }
 }
+
