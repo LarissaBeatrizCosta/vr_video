@@ -25,7 +25,7 @@ class ViewerView extends StatelessWidget {
             ),
             child: IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pushReplacementNamed(context, '/home');
               },
               icon: Icon(
                 Icons.arrow_back,

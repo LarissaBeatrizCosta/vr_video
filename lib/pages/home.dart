@@ -36,7 +36,7 @@ Widget _bodyHome(BuildContext context) {
             OutlinedButton(
               onPressed: () async {
                 await state.getVideo();
-                Navigator.pushNamed(context, '/viewer');
+                Navigator.pushReplacementNamed(context, '/viewer');
               },
               child: Text('Anexar Vídeo 360°', style: TextStyle(fontSize: 18)),
             ),
