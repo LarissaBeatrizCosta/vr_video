@@ -6,19 +6,24 @@ import 'package:vr_player/vr_player.dart';
 class HomeState extends ChangeNotifier {
   ///Url of video 360°
   String? videoPath;
+
   ///Controller of VrPlayer
   VrPlayerController? vrController;
 
   /// Choose a video
   Future<void> getVideo() async {
     final result = await FilePicker.platform.pickFiles(type: FileType.video, allowMultiple: false);
+
     if (result != null && result.files.isNotEmpty) {
       videoPath = result.files.single.path;
-      notifyListeners();
 
       if (vrController != null && videoPath != null) {
-        vrController?.loadVideo(videoUrl: videoPath!);
+        await vrController?.pause();
+        await vrController?.loadVideo(videoUrl: videoPath);
+        await vrController?.play();
       }
+
+      notifyListeners();
     }
   }
 
