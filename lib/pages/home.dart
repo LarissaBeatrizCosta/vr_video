@@ -25,6 +25,7 @@ Widget _bodyHome(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Column(
+      spacing: 16,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
