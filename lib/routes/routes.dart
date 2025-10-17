@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import '../pages/home.dart';
 import '../pages/splash.dart';
+import '../pages/viewer.dart';
 
 // ignore: avoid_classes_with_only_static_members
 ///Class responsable for routes
@@ -13,6 +14,8 @@ class Routes {
         return _pageRouteBuilder(const SplashView());
       case '/home':
         return _pageRouteBuilder(const HomeView());
+      case '/viewer':
+        return _pageRouteBuilder(const ViewerView());
       default:
         return _pageRouteBuilder(const Scaffold(body: Text('Página não encontrada')));
     }

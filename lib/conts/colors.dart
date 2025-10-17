@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
 ///Utility class for colors
 class ColorsApp {
   ColorsApp._();
@@ -12,4 +14,7 @@ class ColorsApp {
 
   ///Color of border of elements
   static const Color borderColor = Color(0xFF9FB1BC);
+
+  ///Background color of app
+  static const Color backgroundColor = Colors.white;
 }

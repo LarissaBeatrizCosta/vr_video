@@ -14,7 +14,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('VR VÍDEO'), backgroundColor: ColorsApp.appBarColor),
-      body: _bodyHome(context),
+      body: Center(child: _bodyHome(context)),
     );
   }
 }
@@ -25,18 +25,25 @@ Widget _bodyHome(BuildContext context) {
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Column(
-      spacing: 16,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 36,
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        OutlinedButton(
-          onPressed: () async {
-            await state.getVideo();
-          },
-          child: Text('Anexar Vídeo 360°'),
+        Image.asset('assets/images/upload.gif'),
+        Column(
+          spacing: 8,
+          children: [
+            OutlinedButton(
+              onPressed: () async {
+                await state.getVideo();
+                Navigator.pushNamed(context, '/viewer');
+              },
+              child: Text('Anexar Vídeo 360°', style: TextStyle(fontSize: 18)),
+            ),
+            Text('Toque no botão para selecionar o vídeo'),
+          ],
         ),
-        videoViewer(context),
-      ], 
+      ],
     ),
   );
 }

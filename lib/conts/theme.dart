@@ -8,7 +8,7 @@ class AppTheme {
 
   ///Theme default of app
   static ThemeData themeData() {
-    const textDefault = TextStyle(color: ColorsApp.textColor);
+    const textDefault = TextStyle(color: ColorsApp.textColor, fontSize: 16);
 
     return ThemeData(
       appBarTheme: AppBarTheme(
