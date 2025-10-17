@@ -1,6 +1,7 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../conts/colors.dart';
 import 'home.dart';
 
 ///Splash of app
@@ -11,12 +12,8 @@ class SplashView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterSplashScreen.gif(
-      gradient: const LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [Colors.amber, Colors.amberAccent],
-      ),
-      gifPath: 'assets/images/rotate.gif',
+      backgroundColor: ColorsApp.appBarColor,
+      gifPath: 'assets/images/360.gif',
       gifWidth: 550,
       gifHeight: 550,
       duration: const Duration(milliseconds: 4000),
